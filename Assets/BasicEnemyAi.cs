@@ -7,14 +7,15 @@ public class BasicEnemyAi : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject Player;
     EnemyState EnemyState;
-    // Start is called before the first frame update
+    public SoundLibrary soundLibrary;
+
     void Start()
     {
         EnemyState = GetComponent<EnemyState>();
         Player = GameObject.Find("Player");
+        soundLibrary = GameObject.Find("SoundLibrary").GetComponent<SoundLibrary>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (EnemyState.PlayerInRange && EnemyState.Manager.WantedLevel == 2 && Player.layer != 3 || EnemyState.PlayerInRange && EnemyState.Manager.WantedLevel >= 2 && Player.layer != 3)
@@ -26,5 +27,10 @@ public class BasicEnemyAi : MonoBehaviour
         {
             transform.Rotate(0, 0, -1, Space.Self);
         }
+    }
+    
+    void OnDestroy()
+    {
+        soundLibrary.Explosion(0);
     }
 }

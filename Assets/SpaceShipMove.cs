@@ -18,14 +18,12 @@ public class SpaceShipMove : MonoBehaviour
     float JustChanged;
     public Manager Manager;
     public SoundLibrary SoundLibrary;
-    public ThrusterAudioSource thrusterAudio;
 
     void Start()
     {
         MapIndicator = this.gameObject.transform.GetChild(0); 
         Thruster = this.gameObject.transform.GetChild(1); 
         Manager = GameObject.Find("Manager").GetComponent<Manager>();
-        // thrusterAudio = this.gameObject.transform.GetChild(3).GetChild(0).GetComponent<ThrusterAudioSource>();
     }
 
     void Update()

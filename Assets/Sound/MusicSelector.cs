@@ -36,7 +36,7 @@ public class MusicSelector : MonoBehaviour
         }
     }
 
-    public void PauseTrack()
+    public void StopTrack()
     {
         MusicPlayer.Stop();
     }

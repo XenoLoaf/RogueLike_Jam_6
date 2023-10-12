@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InstantTransition : MonoBehaviour
+public class StartGameScript : MonoBehaviour
 {
-    void Start()
+    void onClick()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Upgrade");
     }
 }

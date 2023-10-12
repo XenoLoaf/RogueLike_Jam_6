@@ -13,9 +13,9 @@ public class AudioButton : MonoBehaviour
         {
             MusicSelector.NextTrack();
         }
-        if (ButtonType == "PauseTrack")
+        if (ButtonType == "StopTrack")
         {
-            MusicSelector.PauseTrack();
+            MusicSelector.StopTrack();
         }
         if (ButtonType == "PreviousTrack")
         {

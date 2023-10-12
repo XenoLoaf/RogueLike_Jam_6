@@ -5,51 +5,76 @@ using UnityEngine;
 public class ThrusterAudioSource : MonoBehaviour
 {
     public AudioClip[] rocketThruster;
-    public AudioSource Source;
-    public SpaceShipMove SpaceShipMove;
+    public AudioSource source;
+    public SpaceShipMove spaceShipMove;
+    public bool coolThrusters = false;
+    private float originalVolume = 1f;
 
-    public void Start()
+    private void Start()
     {
-        Source = this.gameObject.GetComponent<AudioSource>();
-        Source.clip = rocketThruster[0];
+        source = GetComponent<AudioSource>();
+        source.clip = rocketThruster[0];
+        originalVolume = source.volume;
     }
 
-    public void RocketThruster(bool Thrust)
+    private void Update()
     {
-        if(Thrust == true)
+        if (spaceShipMove.MovementType == "Rocket")
         {
-            Source.PlayOneShot(rocketThruster[0], 0.75f);
+            HandleThrusterInput();
         }
-        
-        if(Thrust == false)
-        {
-            Source.Stop();
-        } 
     }
 
-    public void Update()
+    private void HandleThrusterInput()
     {
-        if(SpaceShipMove.MovementType == "Rocket")
+        bool thrusting = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow);
+
+        if (thrusting && !source.isPlaying)
         {
-            if(Input.GetKey(KeyCode.UpArrow) && !Source.isPlaying)
-            {
-                RocketThruster(true);
-            }
+            source.volume = 1f;
+            RocketThruster(true);
+            coolThrusters = false;
+        }
+        else if (!thrusting)
+        {
+            HandleThrusterCooling();
+            source.Stop();
+        }
+    }
 
-            if(Input.GetKey(KeyCode.DownArrow) && !Source.isPlaying)
-            {
-                RocketThruster(true);
-            }
+    private void HandleThrusterCooling()
+    {
+        if (coolThrusters)
+        {
+            Cooldown();
+        }
+        else
+        {
+            source.volume = originalVolume;
+        }
+    }
 
-            if (Input.GetKeyUp(KeyCode.UpArrow))
-            {
-                RocketThruster(false);
-            }
+    private void RocketThruster(bool thrust)
+    {
+        if (thrust)
+        {
+            source.PlayOneShot(rocketThruster[0], 1f);
+        }
+        else
+        {
+            source.Stop();
+        }
+    }
 
-            if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                RocketThruster(false);
-            }
+    private void Cooldown()
+    {
+        if (source.volume >= 0.3f && source.volume <= 0.9f)
+        {
+            source.volume -= 0.02f;
+        }
+        else
+        {
+            source.volume = originalVolume;
         }
     }
 }

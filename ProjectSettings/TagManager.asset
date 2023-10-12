@@ -12,6 +12,7 @@ TagManager:
   - BulletEnemy
   - Enemy
   - PlanetReloadZone
+  - SoundLibrary
   layers:
   - Default
   - TransparentFX
