@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MusicSelector : MonoBehaviour
 {
@@ -10,23 +11,16 @@ public class MusicSelector : MonoBehaviour
     public string[] SongTitles;
     public int TrackPlaying;
     bool TrackChanged = true;
-    public Text text;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TextMeshProUGUI text;
 
-    // Update is called once per frame
     void Update()
     {
         if (TrackChanged)
         {
-                     MusicPlayer.PlayOneShot(Music[TrackPlaying], 1);
-                     TrackChanged = false;
+            MusicPlayer.PlayOneShot(Music[TrackPlaying], 1);
+            TrackChanged = false;
         }
         text.text = SongTitles[TrackPlaying];
-
     }
 
     public void NextTrack()
@@ -39,6 +33,11 @@ public class MusicSelector : MonoBehaviour
         {
             TrackPlaying = 0;
         }
+    }
+
+    public void StopTrack()
+    {
+        MusicPlayer.Stop();
     }
 
     public void PreviousTrack()

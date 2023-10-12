@@ -16,14 +16,13 @@ public class GroundedEnemyAi : MonoBehaviour
     GameObject Player;
     float PlayerDistance;
     public bool FirstDash = true;
-    // Start is called before the first frame update
+
     void Start()
     {
         Rando = Random.Range(0, Attacks.Length);
         Player = GameObject.FindWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         ActualBtwAttacks -= Time.deltaTime;
@@ -34,7 +33,7 @@ public class GroundedEnemyAi : MonoBehaviour
         PlayerDistance = Vector2.Distance(PlayerVector, Vector);
         if (ActualBtwAttacks <= 0 && Player.layer == 3 && PlayerDistance <= 20)
         {
-                        transform.up = Player.transform.position - transform.position;
+            transform.up = Player.transform.position - transform.position;
             Instantiate(Attacks[Rando], transform.position, transform.rotation);
             Debug.Log("Why are you repeting");
             Rando = Random.Range(0, Attacks.Length);
@@ -45,7 +44,6 @@ public class GroundedEnemyAi : MonoBehaviour
         {
         if (MovementKind[Rando] == 1)
         {
-
             transform.position = Vector2.MoveTowards(Vector, PlanetVector, Speed * Time.deltaTime);
             transform.up = Player.transform.position - transform.position;
             Debug.Log("Show");

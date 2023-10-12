@@ -6,13 +6,12 @@ public class EnemyDetection : MonoBehaviour
 {
     public Manager Manager;
     public GameObject This;
-    // Start is called before the first frame update
+
     void Start()
     {
         Manager = GameObject.Find("Manager").GetComponent<Manager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Manager.WantedLevel >= 2)
@@ -31,10 +30,12 @@ public class EnemyDetection : MonoBehaviour
         {
             Resources Resources = other.gameObject.GetComponent<Resources>();
             PickUpAbleObject PickUpAbleObject = Resources.Carrying.GetComponent<PickUpAbleObject>();
-            if (PickUpAbleObject.ItemType == "Contraband")
+            if(PickUpAbleObject.ItemType == "Contraband")
             {
                 Manager.WantedLevel += 1;
             }
+            else {}
         }
+        else {}
     }
 }

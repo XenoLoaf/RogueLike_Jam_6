@@ -6,7 +6,9 @@ public class SpaceShipMove : MonoBehaviour
 {
     public Rigidbody2D rb;
     public GameObject EngineFire;
-        public GameObject EngineGas;
+    public GameObject EngineGas;
+    public Transform Thruster;
+    public Transform MapIndicator;
     public string MovementType = "Rocket";
     public bool CanLand;
     public GameObject ShipPosition;
@@ -18,7 +20,7 @@ public class SpaceShipMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Thruster = this.gameObject.transform.GetChild(1); // this.gameObject.transform.GetChild(0);
     }
 
     // Update is called once per frame
@@ -31,14 +33,14 @@ public class SpaceShipMove : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(transform.up * Time.deltaTime * 20,ForceMode2D.Impulse);
-            Instantiate(EngineFire, transform.position, transform.rotation);
-              Instantiate(EngineGas, transform.position, transform.rotation);
+            Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
+            Instantiate(EngineGas, Thruster.transform.position, Thruster.transform.rotation);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             rb.AddForce(transform.up * Time.deltaTime * -20,ForceMode2D.Impulse);
-            Instantiate(EngineFire, transform.position, transform.rotation);
-            Instantiate(EngineGas, transform.position, transform.rotation);
+            Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
+            Instantiate(EngineGas, Thruster.transform.position, Thruster.transform.rotation);
         }
 
         if (Input.GetKeyDown("space"))
@@ -50,10 +52,12 @@ public class SpaceShipMove : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Rotate(0, 0, -5, Space.Self);
+            MapIndicator.transform.rotation = transform.rotation;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(0, 0, 5, Space.Self);
+            MapIndicator.transform.rotation = transform.rotation;
         }
         }
         if (MovementType == "Landed")

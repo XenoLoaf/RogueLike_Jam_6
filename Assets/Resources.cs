@@ -7,24 +7,26 @@ public class Resources : MonoBehaviour
     public float ShipFuel;
     public float Hunger;
     public GameObject Carrying;
+    public GameObject CarryEmpty;
     public Vector2 CarryPosition;
     public float BtwPickup;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        CarryPosition = new Vector2(0, 0);
+        Carrying = CarryEmpty;
     }
 
-    // Update is called once per frame
     void Update()
     {
         BtwPickup -= Time.deltaTime;
         CarryPosition = new Vector2(transform.position.x, transform.position.y + 1.5f);
         Carrying.transform.position = CarryPosition;
 
-        if (Carrying != null && Input.GetKey("q") && BtwPickup <= 0)
+        if (Carrying != CarryEmpty && Input.GetKey("q") && BtwPickup <= 0)
         {
-            Carrying = null;
+            
+            Carrying = CarryEmpty;
             BtwPickup = 0.5f;
         }
 

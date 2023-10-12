@@ -9,13 +9,12 @@ public class PlanetResourceSpawning : MonoBehaviour
     public float YArea;
     public int AmountToSpawn;
     float StartWait = 2;
-    // Start is called before the first frame update
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         StartWait -= Time.deltaTime;

@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MerchantSystem : MonoBehaviour
 {
     public string[] QuestTexts;
     public string[] QuestObjectNeeded;
     public int Quest;
-    public Text QuestDisplay;
+    public TextMeshProUGUI CurrentQuestText;
     public GameObject Ps;
     float wait;
     bool waiting;
     int AmountGiven;
     public Upgrade Upgrade;
     public Manager Manager;
-    // Start is called before the first frame update
+
     void Start()
     {
         Quest = Random.Range(0, QuestTexts.Length);
     }
 
-    // Update is called once per frame
     void Update()
     {
         wait -= Time.deltaTime;
 
-        QuestDisplay.text = QuestTexts[Quest];
+        CurrentQuestText.text = QuestTexts[Quest];
 
         if (AmountGiven >= 3)
         {
