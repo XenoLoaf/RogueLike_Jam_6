@@ -26,15 +26,16 @@ public class EnemyDetection : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.tag == "Player")
+        if(other.transform.tag == "Player")
         {
-            Resources Resources = other.gameObject.GetComponent<Resources>();
-            PickUpAbleObject PickUpAbleObject = Resources.Carrying.GetComponent<PickUpAbleObject>();
-            if(PickUpAbleObject.ItemType == "Contraband")
-            {
-                Manager.WantedLevel += 1;
-            }
-            else {}
+            print(other);
+            // Resources Resources = other.gameObject.GetComponent<Resources>();
+            // PickUpAbleObject PickUpAbleObject = Resources.Carrying.GetComponent<PickUpAbleObject>();
+            // if(PickUpAbleObject.ItemType == "Contraband")
+            // {
+            //     Manager.WantedLevel += 1;
+            // }
+            // else {} 
         }
         else {}
     }

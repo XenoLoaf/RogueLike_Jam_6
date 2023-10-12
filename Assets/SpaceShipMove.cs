@@ -17,75 +17,76 @@ public class SpaceShipMove : MonoBehaviour
     public Sprite[] sprites;
     float JustChanged;
     public Manager Manager;
-    // Start is called before the first frame update
+
     void Start()
     {
-        Thruster = this.gameObject.transform.GetChild(1); // this.gameObject.transform.GetChild(0);
+        MapIndicator = this.gameObject.transform.GetChild(0); 
+        Thruster = this.gameObject.transform.GetChild(1); 
     }
 
-    // Update is called once per frame
     void Update()
     {
         JustChanged -= Time.deltaTime;
 
         if (MovementType == "Rocket")
         {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            rb.AddForce(transform.up * Time.deltaTime * 20,ForceMode2D.Impulse);
-            Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
-            Instantiate(EngineGas, Thruster.transform.position, Thruster.transform.rotation);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            rb.AddForce(transform.up * Time.deltaTime * -20,ForceMode2D.Impulse);
-            Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
-            Instantiate(EngineGas, Thruster.transform.position, Thruster.transform.rotation);
-        }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.AddForce(transform.up * Time.deltaTime * 20,ForceMode2D.Impulse);
+                Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
+                Instantiate(EngineGas, Thruster.transform.position, Thruster.transform.rotation);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                rb.AddForce(transform.up * Time.deltaTime * -20,ForceMode2D.Impulse);
+                Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
+                Instantiate(EngineGas, Thruster.transform.position, Thruster.transform.rotation);
+            }
 
-        if (Input.GetKeyDown("space"))
-        {
-            rb.AddForce(transform.up * Time.deltaTime * 200,ForceMode2D.Impulse);
-            Instantiate(EngineFire, transform.position, transform.rotation);
+            if (Input.GetKeyDown("space"))
+            {
+                rb.AddForce(transform.up * Time.deltaTime * 200,ForceMode2D.Impulse);
+                Instantiate(EngineFire, transform.position, transform.rotation);
+            }
+        
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Rotate(0, 0, -5, Space.Self);
+                MapIndicator.transform.rotation = transform.rotation;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Rotate(0, 0, 5, Space.Self);
+                MapIndicator.transform.rotation = transform.rotation;
+            }
         }
-       
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(0, 0, -5, Space.Self);
-            MapIndicator.transform.rotation = transform.rotation;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Rotate(0, 0, 5, Space.Self);
-            MapIndicator.transform.rotation = transform.rotation;
-        }
-        }
+        
         if (MovementType == "Landed")
         {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            rb.velocity = new Vector2(0 , Manager.SpeedGrounded);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            rb.velocity = new Vector2(0 , - Manager.SpeedGrounded);
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            rb.velocity = new Vector2(- Manager.SpeedGrounded, 0);
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            rb.velocity = new Vector2( Manager.SpeedGrounded, 0);
-            transform.rotation = Quaternion.Euler(0, 0, -90);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.velocity = new Vector2(0 , Manager.SpeedGrounded);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                rb.velocity = new Vector2(0 , - Manager.SpeedGrounded);
+                transform.rotation = Quaternion.Euler(0, 0, 180);
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                rb.velocity = new Vector2(- Manager.SpeedGrounded, 0);
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                rb.velocity = new Vector2( Manager.SpeedGrounded, 0);
+                transform.rotation = Quaternion.Euler(0, 0, -90);
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
 
         if (CanLand && Input.GetKeyDown("s") && MovementType != "Landed" && JustChanged <= 0)

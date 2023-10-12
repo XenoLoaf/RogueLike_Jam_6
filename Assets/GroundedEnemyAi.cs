@@ -17,8 +17,9 @@ public class GroundedEnemyAi : MonoBehaviour
     float PlayerDistance;
     public bool FirstDash = true;
 
-    void Start()
+    void Awake()
     {
+        SetPlanet();
         Rando = Random.Range(0, Attacks.Length);
         Player = GameObject.FindWithTag("Player");
     }
@@ -26,9 +27,10 @@ public class GroundedEnemyAi : MonoBehaviour
     void Update()
     {
         ActualBtwAttacks -= Time.deltaTime;
-        Vector2 PlanetVector = Planet.transform.position;
+        
         Vector2 Vector = transform.position;
         Vector2 PlayerVector = Player.transform.position;
+        Vector2 PlanetVector = Planet.transform.position;
 
         PlayerDistance = Vector2.Distance(PlayerVector, Vector);
         if (ActualBtwAttacks <= 0 && Player.layer == 3 && PlayerDistance <= 20)
@@ -40,38 +42,44 @@ public class GroundedEnemyAi : MonoBehaviour
             ActualBtwAttacks = AttackTimers[Rando];
             FirstDash = true;
         }
+        
         if (Player.layer == 3 && PlayerDistance <= 20)
         {
-        if (MovementKind[Rando] == 1)
-        {
-            transform.position = Vector2.MoveTowards(Vector, PlanetVector, Speed * Time.deltaTime);
-            transform.up = Player.transform.position - transform.position;
-            Debug.Log("Show");
-        }
-        if (MovementKind[Rando] == 2)
-        {
-            transform.position = Vector2.MoveTowards(Vector, PlayerVector, Speed * Time.deltaTime);
-            transform.up = Player.transform.position - transform.position;
-        }
-        if (MovementKind[Rando] == 3 && FirstDash)
-        {
-            transform.up = Player.transform.position - transform.position;
-            rb.velocity = transform.up * Time.deltaTime * 600;
-            FirstDash = false;
-        }
-        else if (FirstDash == true)
-        {
-            rb.velocity = Vector2.zero;
-        }
+            if (MovementKind[Rando] == 1)
+            {
+                transform.position = Vector2.MoveTowards(Vector, PlanetVector, Speed * Time.deltaTime);
+                transform.up = Player.transform.position - transform.position;
+                Debug.Log("Show");
+            }
+            if (MovementKind[Rando] == 2)
+            {
+                transform.position = Vector2.MoveTowards(Vector, PlayerVector, Speed * Time.deltaTime);
+                transform.up = Player.transform.position - transform.position;
+            }
+            if (MovementKind[Rando] == 3 && FirstDash)
+            {
+                transform.up = Player.transform.position - transform.position;
+                rb.velocity = transform.up * Time.deltaTime * 600;
+                FirstDash = false;
+            }
+            else if (FirstDash == true)
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.tag == "LandAblePlanet")
+        if(other.transform.tag == "LandAblePlanet")
         {
             Planet = other.gameObject;
         }
+    }
+
+    void SetPlanet()
+    {
+        Planet = this.gameObject;
     }
 
 }
