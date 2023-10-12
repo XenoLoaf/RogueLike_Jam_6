@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7235870682172629834}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &3578340408484375907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4921431987623931078}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &451907600113414842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4287271425180798100}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &3217525267789998343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,6 +638,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4307610706735939476}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &7645805912161285295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +817,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6920423206931436188}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &451868077502537197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1035,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1097383797906958222}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &2110061784032328319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,6 +1214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2576344082524355765}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &8510369946166068715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1393,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2562175130830058908}
+  PlayerShoot: 0
+  Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &2944782288790617917
 MonoBehaviour:
   m_ObjectHideFlags: 0

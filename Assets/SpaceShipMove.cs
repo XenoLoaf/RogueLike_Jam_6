@@ -22,6 +22,7 @@ public class SpaceShipMove : MonoBehaviour
     {
         MapIndicator = this.gameObject.transform.GetChild(0); 
         Thruster = this.gameObject.transform.GetChild(1); 
+                Manager = GameObject.Find("Manager").GetComponent<Manager>();
     }
 
     void Update()

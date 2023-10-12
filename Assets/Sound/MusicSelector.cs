@@ -12,6 +12,7 @@ public class MusicSelector : MonoBehaviour
     public int TrackPlaying;
     bool TrackChanged = true;
     public TextMeshProUGUI text;
+    bool MusicPaused;
 
     void Update()
     {
@@ -35,7 +36,7 @@ public class MusicSelector : MonoBehaviour
         }
     }
 
-    public void StopTrack()
+    public void PauseTrack()
     {
         MusicPlayer.Stop();
     }

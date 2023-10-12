@@ -10,9 +10,9 @@ public class PlayerHp : MonoBehaviour
     public GameObject[] Hearths;
     public float DamageInvincabilityBtw;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+                Manager = GameObject.Find("Manager").GetComponent<Manager>();
     }
 
     // Update is called once per frame
@@ -23,6 +23,8 @@ public class PlayerHp : MonoBehaviour
         if (Manager.Hp <= 0)
         {
             SceneManager.LoadScene("SampleScene");
+            Manager.Hp = 3;
+            Manager.Camera = null;
         }
 
         if (Manager.Hp == 1)

@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour
     public Rigidbody2D rb;
     public bool PlayerShoot;
     public Manager Manager;
+    public float DestroyTime = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,12 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DestroyTime -= Time.deltaTime;
 
+        if (DestroyTime <= 0)
+        {
+            Destroy(this.gameObject);
+        }
 
         if (PlayerShoot)
         {

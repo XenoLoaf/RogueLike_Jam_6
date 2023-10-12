@@ -4932,6 +4932,7 @@ MonoBehaviour:
   rb: {fileID: 2758503593103235709}
   PlayerShoot: 1
   Manager: {fileID: 0}
+  DestroyTime: 0
 --- !u!50 &2758503593103235709
 Rigidbody2D:
   serializedVersion: 4
@@ -5110,6 +5111,7 @@ MonoBehaviour:
   rb: {fileID: 6565113195830498703}
   PlayerShoot: 1
   Manager: {fileID: 0}
+  DestroyTime: 0
 --- !u!50 &6565113195830498703
 Rigidbody2D:
   serializedVersion: 4
@@ -5289,6 +5291,7 @@ MonoBehaviour:
   rb: {fileID: 2037488954045174081}
   PlayerShoot: 1
   Manager: {fileID: 0}
+  DestroyTime: 20
 --- !u!50 &2037488954045174081
 Rigidbody2D:
   serializedVersion: 4

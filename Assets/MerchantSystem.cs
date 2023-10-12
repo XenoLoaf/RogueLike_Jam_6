@@ -17,10 +17,14 @@ public class MerchantSystem : MonoBehaviour
     int AmountGiven;
     public Upgrade Upgrade;
     public Manager Manager;
+    bool Allow = true;
+    public GameObject FinalBoss;
 
     void Start()
     {
         Quest = Random.Range(0, QuestTexts.Length);
+        Manager = GameObject.Find("Manager").GetComponent<Manager>();
+        Upgrade = GameObject.Find("Manager").GetComponent<Upgrade>();
     }
 
     void Update()
@@ -29,9 +33,10 @@ public class MerchantSystem : MonoBehaviour
 
         CurrentQuestText.text = QuestTexts[Quest];
 
-        if (AmountGiven >= 3)
+        if (AmountGiven >= 3 && Allow)
         {
-
+            Instantiate(FinalBoss, transform.position, transform.rotation);
+            Allow = false;
         }
     }
 

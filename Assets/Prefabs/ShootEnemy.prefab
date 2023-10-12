@@ -103,6 +103,7 @@ MonoBehaviour:
   rb: {fileID: 549494056148577248}
   PlayerShoot: 0
   Manager: {fileID: 0}
+  DestroyTime: 10
 --- !u!50 &549494056148577248
 Rigidbody2D:
   serializedVersion: 4
@@ -177,4 +178,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54d7edba9dd9a543aad35349c32d18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 0.5

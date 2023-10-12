@@ -103,6 +103,7 @@ MonoBehaviour:
   rb: {fileID: 1365078508112689427}
   PlayerShoot: 0
   Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &9125351305900773688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
   rb: {fileID: 8255688418219284648}
   PlayerShoot: 0
   Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &6404666569505316408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +495,7 @@ MonoBehaviour:
   rb: {fileID: 23927190651239327}
   PlayerShoot: 0
   Manager: {fileID: 0}
+  DestroyTime: 7
 --- !u!114 &314055129189568674
 MonoBehaviour:
   m_ObjectHideFlags: 0

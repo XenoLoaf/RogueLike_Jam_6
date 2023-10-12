@@ -105,8 +105,8 @@ MonoBehaviour:
   Speed: 2
   Attacks:
   - {fileID: 7690980540629489827, guid: ada2b38c27c085d4a9aca336ec83fa42, type: 3}
-  - {fileID: 6035600136471526965, guid: 618668f1c3ea4a347a69125d4f6dfc95, type: 3}
-  - {fileID: 6035600136471526965, guid: 618668f1c3ea4a347a69125d4f6dfc95, type: 3}
+  - {fileID: 7690980540629489827, guid: ada2b38c27c085d4a9aca336ec83fa42, type: 3}
+  - {fileID: 7690980540629489827, guid: ada2b38c27c085d4a9aca336ec83fa42, type: 3}
   AttackTimers:
   - 4
   - 2
@@ -193,6 +193,7 @@ MonoBehaviour:
   ps: {fileID: 2445765670312081945, guid: ab6bd49da3f1b1541abb06526c72dd6d, type: 3}
   DeathPs: {fileID: 2445765670312081945, guid: ab6bd49da3f1b1541abb06526c72dd6d, type: 3}
   Drop: {fileID: 7585588385354573707, guid: b4fcd8fbe190c22428df7be039271385, type: 3}
+  FinalBoss: 0
 --- !u!1 &6470712256163791584
 GameObject:
   m_ObjectHideFlags: 0

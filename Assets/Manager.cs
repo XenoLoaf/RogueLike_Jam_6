@@ -11,26 +11,28 @@ public class Manager : MonoBehaviour
     public float BulletSize;
     public float BulletSpeed;
     public float DamageInvincability;
-    public GameObject Map;
-    public GameObject MapTwo;
+
+    [HideInInspector]
+    public Transform Camera;
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Tab))
+
+
+        if (Camera == null)
         {
-            Map.SetActive(true);
-             MapTwo.SetActive(true);
+            Camera = GameObject.Find("Main Camera").transform;
         }
-        else
+        else 
         {
-            Map.SetActive(false);
-            MapTwo.SetActive(false);
+            transform.position = Camera.position;
         }
     }
 }
