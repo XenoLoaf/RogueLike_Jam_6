@@ -8,13 +8,12 @@ public class Shoot : MonoBehaviour
     public bool PlayerShoot;
     public Manager Manager;
     public float DestroyTime = 20;
-    // Start is called before the first frame update
+
     void Start()
     {
         Manager = GameObject.Find("Manager").GetComponent<Manager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         DestroyTime -= Time.deltaTime;
@@ -27,11 +26,11 @@ public class Shoot : MonoBehaviour
         if (PlayerShoot)
         {
             transform.localScale = new Vector2(Manager.BulletSize * 5, Manager.BulletSize);
-                    rb.AddForce(transform.up * Time.deltaTime * Manager.BulletSpeed, ForceMode2D.Impulse);
+            rb.AddForce(transform.up * Time.deltaTime * Manager.BulletSpeed, ForceMode2D.Impulse);
         }
         else 
         {
-                    rb.AddForce(transform.up * Time.deltaTime * 30, ForceMode2D.Impulse);
+            rb.AddForce(transform.up * Time.deltaTime * 30, ForceMode2D.Impulse);
         }
     }
 }

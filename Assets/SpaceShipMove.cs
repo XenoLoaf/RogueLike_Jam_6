@@ -17,12 +17,15 @@ public class SpaceShipMove : MonoBehaviour
     public Sprite[] sprites;
     float JustChanged;
     public Manager Manager;
+    public SoundLibrary SoundLibrary;
+    public ThrusterAudioSource thrusterAudio;
 
     void Start()
     {
         MapIndicator = this.gameObject.transform.GetChild(0); 
         Thruster = this.gameObject.transform.GetChild(1); 
-                Manager = GameObject.Find("Manager").GetComponent<Manager>();
+        Manager = GameObject.Find("Manager").GetComponent<Manager>();
+        // thrusterAudio = this.gameObject.transform.GetChild(3).GetChild(0).GetComponent<ThrusterAudioSource>();
     }
 
     void Update()
@@ -31,13 +34,13 @@ public class SpaceShipMove : MonoBehaviour
 
         if (MovementType == "Rocket")
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if(Input.GetKey(KeyCode.UpArrow))
             {
                 rb.AddForce(transform.up * Time.deltaTime * 20,ForceMode2D.Impulse);
                 Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
                 Instantiate(EngineGas, Thruster.transform.position, Thruster.transform.rotation);
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+            if(Input.GetKey(KeyCode.DownArrow))
             {
                 rb.AddForce(transform.up * Time.deltaTime * -20,ForceMode2D.Impulse);
                 Instantiate(EngineFire, Thruster.transform.position, Thruster.transform.rotation);
