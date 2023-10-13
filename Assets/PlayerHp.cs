@@ -8,14 +8,15 @@ public class PlayerHp : MonoBehaviour
     public Manager Manager;
     public GameObject HurtPs;
     public GameObject[] Hearths;
+    public SoundLibrary soundLibrary;
     public float DamageInvincabilityBtw;
-    // Start is called before the first frame update
+
     void Awake()
     {
-                Manager = GameObject.Find("Manager").GetComponent<Manager>();
+        Manager = GameObject.Find("Manager").GetComponent<Manager>();
+        soundLibrary = GameObject.Find("SoundLibrary").GetComponent<SoundLibrary>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         DamageInvincabilityBtw -= Time.deltaTime;
@@ -36,7 +37,7 @@ public class PlayerHp : MonoBehaviour
             Hearths[0].SetActive(false);
         }
 
-                if (Manager.Hp == 2)
+            if (Manager.Hp == 2)
         {
             Hearths[1].SetActive(true);
         }
@@ -62,12 +63,15 @@ public class PlayerHp : MonoBehaviour
             Manager.Hp -= other.gameObject.GetComponent<ShootDamage>().Damage;
             Instantiate(HurtPs, transform.position, HurtPs.transform.rotation);
             DamageInvincabilityBtw = Manager.DamageInvincability;
+            soundLibrary.TakeDamage();
         }
+
         if (other.transform.tag == "Enemy" && DamageInvincabilityBtw <= 0)
         {
             Manager.Hp -= 1;
             Instantiate(HurtPs, transform.position, HurtPs.transform.rotation);
             DamageInvincabilityBtw = Manager.DamageInvincability;
+            soundLibrary.TakeDamage();
         }
     }
 }

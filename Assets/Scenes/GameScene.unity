@@ -1149,10 +1149,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 75
-  field of view: 90
+  far clip plane: 200
+  field of view: 40
   orthographic: 1
-  orthographic size: 16
+  orthographic size: 10
   m_Depth: 50
   m_CullingMask:
     serializedVersion: 2
@@ -1836,6 +1836,7 @@ MonoBehaviour:
   - {fileID: 506529118}
   - {fileID: 767439423}
   - {fileID: 133545734}
+  soundLibrary: {fileID: 0}
   DamageInvincabilityBtw: 0
 --- !u!114 &663720472
 MonoBehaviour:
@@ -3679,11 +3680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3009704004268465563, guid: ee2f23aba9a3d654da3a7ed81cf06db4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -98.05789
+      value: -342
       objectReference: {fileID: 0}
     - target: {fileID: 3009704004268465563, guid: ee2f23aba9a3d654da3a7ed81cf06db4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -158.19662
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 3009704004268465563, guid: ee2f23aba9a3d654da3a7ed81cf06db4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4364,8 +4365,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 05810ff99259ec645a387f576c29de87, type: 3}
   SongTitles:
   - Track 1 - Cosmic Heist - XenoLoaf
-  - Track 3 - Twilight Glow - XenoLoaf
-  - Track 4 - Star Gazing - XenoLoaf
+  - Track 2 - Twilight Glow - XenoLoaf
+  - Track 3 - Star Gazing - XenoLoaf
   TrackPlaying: 0
   text: {fileID: 1812764228}
 --- !u!61 &2113778388
@@ -4579,6 +4580,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3408116503185541855, guid: 430d1f7b191ba224eb53db181cc74e67, type: 3}
+      propertyPath: Sfx.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408116503185541855, guid: 430d1f7b191ba224eb53db181cc74e67, type: 3}
+      propertyPath: Sfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 11ccb028873c3dc46b87b6b1ef3beed7, type: 3}
     - target: {fileID: 5774300509938349639, guid: 430d1f7b191ba224eb53db181cc74e67, type: 3}
       propertyPath: m_Name
       value: SoundLibrary

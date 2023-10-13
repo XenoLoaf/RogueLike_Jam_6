@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartGameScript : MonoBehaviour
 {
-    void onClick()
+    public void LoadScene()
     {
         SceneManager.LoadScene("Upgrade");
     }

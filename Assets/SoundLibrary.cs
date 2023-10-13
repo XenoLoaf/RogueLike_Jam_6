@@ -15,9 +15,9 @@ public class SoundLibrary : MonoBehaviour
 
     }
 
-    public void Play(int Sound)
+    public void TakeDamage()
     {
-        Source.PlayOneShot(Sfx[Sound], 0.75f);
+        Source.PlayOneShot(Sfx[0], 0.75f);
     }
 
     public void LaserShot(int Sound)
