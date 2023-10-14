@@ -10,23 +10,23 @@ public class SoundLibrary : MonoBehaviour
     public AudioClip[] explosion;
     public AudioSource Source;
 
-    public void StopSound()
-    {
-
-    }
-
     public void TakeDamage()
     {
         Source.PlayOneShot(Sfx[0], 0.75f);
     }
 
-    public void LaserShot(int Sound)
+    public void LaserShot()
     {
-        Source.PlayOneShot(laserShot[Sound], 0.75f);
+        int LaserSound = Random.Range(0,2);
+        Source.PlayOneShot(laserShot[LaserSound], 1f);
+    }
+    public void LaserShot(int sound)
+    {
+        Source.PlayOneShot(laserShot[sound], 0.75f);
     }
 
-    public void Explosion(int Sound)
+    public void Explosion()
     {
-        Source.PlayOneShot(explosion[Sound], 0.75f);
+        Source.PlayOneShot(explosion[0], 0.75f);
     }
 }

@@ -12,13 +12,12 @@ public class EnemyHpSystem : MonoBehaviour
     public GameObject DeathPs;
     public GameObject Drop;
     public bool FinalBoss;
-    // Start is called before the first frame update
+
     void Start()
     {
         Manager = GameObject.Find("Manager").GetComponent<Manager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Hp <= 0)

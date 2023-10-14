@@ -8,13 +8,17 @@ public class ThrusterAudioSource : MonoBehaviour
     public AudioSource source;
     public SpaceShipMove spaceShipMove;
     public bool coolThrusters = false;
+    public bool justReleased = false;
     private float originalVolume = 1f;
 
     private void Start()
     {
         source = GetComponent<AudioSource>();
         source.clip = rocketThruster[0];
-        originalVolume = source.volume;
+        source.volume = 0f;
+        source.Play();
+        source.Pause();
+        source.loop = true;
     }
 
     private void Update()
@@ -28,25 +32,38 @@ public class ThrusterAudioSource : MonoBehaviour
     private void HandleThrusterInput()
     {
         bool thrusting = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow);
-
-        if (thrusting && !source.isPlaying)
+        
+        if(thrusting)
         {
-            source.volume = 1f;
-            RocketThruster(true);
+            source.volume = originalVolume;
+        }
+
+        if(thrusting && !source.isPlaying)
+        {
+            justReleased = true;
             coolThrusters = false;
+            RocketThruster(true);
         }
         else if (!thrusting)
         {
-            HandleThrusterCooling();
-            source.Stop();
+            HandleThrusterCooling(thrusting);
         }
     }
 
-    private void HandleThrusterCooling()
+    private void HandleThrusterCooling(bool thrusting)
     {
-        if (coolThrusters)
+        coolThrusters = !thrusting;
+
+        if(coolThrusters && justReleased)
         {
-            Cooldown();
+            source.volume -= 0.02f;
+            if(source.volume <= 0.03f)
+            {
+                source.Pause();
+                justReleased = false;
+                source.volume = originalVolume;
+                coolThrusters = false;
+            }
         }
         else
         {
@@ -56,25 +73,14 @@ public class ThrusterAudioSource : MonoBehaviour
 
     private void RocketThruster(bool thrust)
     {
-        if (thrust)
-        {
-            source.PlayOneShot(rocketThruster[0], 1f);
-        }
-        else
-        {
-            source.Stop();
-        }
-    }
-
-    private void Cooldown()
-    {
-        if (source.volume >= 0.3f && source.volume <= 0.9f)
-        {
-            source.volume -= 0.02f;
-        }
-        else
+        if(thrust)
         {
             source.volume = originalVolume;
+            source.UnPause();
+        }
+        else
+        {
+            source.Pause();
         }
     }
 }

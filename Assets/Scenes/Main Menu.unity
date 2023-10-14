@@ -366,7 +366,6 @@ GameObject:
   m_Component:
   - component: {fileID: 326575156}
   - component: {fileID: 326575154}
-  - component: {fileID: 326575155}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -470,20 +469,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &326575155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326575153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cdb2517b2611f842af61c7f86faab17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VolumeSlider: {fileID: 353158850}
-  VolumeLevel: 0
 --- !u!4 &326575156
 Transform:
   m_ObjectHideFlags: 0
@@ -2604,6 +2589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MusicPlayer: {fileID: 326575154}
+  volSlider: {fileID: 353158852}
   Music:
   - {fileID: 8300000, guid: faac0117d0a0afb42a5f8009895c34ae, type: 3}
   - {fileID: 8300000, guid: 7b098ac555818ff45b0b91580ec06e00, type: 3}
@@ -2613,7 +2599,8 @@ MonoBehaviour:
   - Track 2 - Twilight Glow - XenoLoaf
   - Track 3 - Star Gazing - XenoLoaf
   TrackPlaying: 0
-  text: {fileID: 868138221}
+  SongNameText: {fileID: 868138221}
+  MusicPaused: 0
 --- !u!61 &2133235857
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,12 +7,13 @@ using TMPro;
 public class MusicSelector : MonoBehaviour
 {
     public AudioSource MusicPlayer;
+    public Slider volSlider;
     public AudioClip[] Music;
     public string[] SongTitles;
     public int TrackPlaying;
     bool TrackChanged = true;
-    public TextMeshProUGUI text;
-    bool MusicPaused;
+    public TextMeshProUGUI SongNameText;
+    public bool MusicPaused = false;
 
     void Update()
     {
@@ -20,8 +21,30 @@ public class MusicSelector : MonoBehaviour
         {
             MusicPlayer.PlayOneShot(Music[TrackPlaying], 1);
             TrackChanged = false;
+            SongNameText.text = SongTitles[TrackPlaying];
         }
-        text.text = SongTitles[TrackPlaying];
+        if((Input.GetKeyDown("z")))
+        {
+            PreviousTrack();
+        }
+        if((Input.GetKeyDown("x")))
+        {
+            NextTrack();
+        }
+        if((Input.GetKey("c")) && !(Input.GetKey("v")))
+        {
+            MusicPlayer.volume -= 0.005f;
+            volSlider.value = MusicPlayer.volume;
+        }
+        if((Input.GetKey("v")) && !(Input.GetKey("c")))
+        {
+            MusicPlayer.volume += 0.005f;
+            volSlider.value = MusicPlayer.volume;
+        }
+        if((Input.GetKeyDown("r")))
+        {
+            PauseTrack();
+        }
     }
 
     public void NextTrack()
@@ -36,9 +59,18 @@ public class MusicSelector : MonoBehaviour
         }
     }
 
-    public void StopTrack()
+    public void PauseTrack()
     {
-        MusicPlayer.Stop();
+        if(MusicPaused == false)
+        {
+            MusicPaused = true;
+            MusicPlayer.Pause();
+        }
+        else
+        {
+            MusicPaused = false;
+            MusicPlayer.UnPause();
+        }
     }
 
     public void PreviousTrack()

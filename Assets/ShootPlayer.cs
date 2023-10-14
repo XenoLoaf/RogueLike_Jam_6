@@ -21,13 +21,13 @@ public class ShootPlayer : MonoBehaviour
         {
             Instantiate(Attacks[0], transform.position, transform.rotation);
             BtwShoot = 0.25f;
-            SoundLibrary.LaserShot(0);
+            SoundLibrary.LaserShot();
         }
         else if(Input.GetKey("a") && BtwShoot <= 0 && ShipMove.MovementType == "Landed")
         {
             Instantiate(Attacks[1], transform.position, transform.rotation);
             BtwShoot = 0.8f;
-            SoundLibrary.LaserShot(1);
+            SoundLibrary.LaserShot(3);
         }
     }
 }

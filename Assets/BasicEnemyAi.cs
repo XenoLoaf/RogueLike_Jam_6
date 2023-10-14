@@ -31,6 +31,6 @@ public class BasicEnemyAi : MonoBehaviour
     
     void OnDestroy()
     {
-        soundLibrary.Explosion(0);
+        soundLibrary.Explosion();
     }
 }

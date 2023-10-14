@@ -8,12 +8,18 @@ public class ResourcesCs : MonoBehaviour
     public float Hunger;
     public GameObject Carrying;
     public GameObject CarryEmpty;
+
+    public GameObject MerchantIndicator;
+    public GameObject Merchant;
+    public float deactivationDistance = 3f;
+    
     public Vector2 CarryPosition;
     public float BtwPickup;
 
-    void Start()
+    void Awake()
     {
         CarryPosition = new Vector2(0, 0);
+        MerchantIndicator.SetActive(false);
     }
 
     void Update()
@@ -28,12 +34,23 @@ public class ResourcesCs : MonoBehaviour
 
         if (Carrying != null && Input.GetKey("q") && BtwPickup <= 0)
         {
-            
             Carrying = null;
             BtwPickup = 0.5f;
+            MerchantIndicator.SetActive(false);
         }
 
-
+        if(Carrying != null)
+        {
+            float distanceToMerchant = Vector3.Distance(MerchantIndicator.transform.position, Merchant.transform.position);
+            if (distanceToMerchant <= deactivationDistance)
+            {
+                MerchantIndicator.SetActive(false);
+            }
+            else
+            {
+                MerchantIndicator.SetActive(true);
+            }
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -42,6 +59,7 @@ public class ResourcesCs : MonoBehaviour
         {
             Carrying = other.gameObject;
             BtwPickup = 0.5f;
+            MerchantIndicator.SetActive(true);
         }
     }
 }
